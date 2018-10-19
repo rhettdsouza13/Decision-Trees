@@ -1,7 +1,7 @@
 # Decision-Trees
 This is the basic implementation of ID3 (decision tree classification) with pruning, from the ground up.
 
-To call the decision tree in a defined main script use:
+To train the decision tree:
 ```python
 ID3(examples, default)
 #This returns the node object of the root of the tree.
@@ -23,7 +23,7 @@ prune(tree_root, validation_set)
 ```
 
 Feel free to make use of the unit tests which are in unit_tests.py to be used to play around and understand the algorithm implementation.
-Also, feel free to use your own dataset. However, make sure to represent missing values as '?'.
+Also, feel free to use your own dataset. However, make sure to represent missing values as '?', and represent your target label with a column (dictionary key) as 'Class'.
 
 
 Experimentation was performend on the house_votes dataset (available in house_votes_84.csv).
