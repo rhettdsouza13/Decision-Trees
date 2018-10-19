@@ -27,4 +27,6 @@ Also, feel free to use your own dataset. However, make sure to represent missing
 
 
 Experimentation was performend on the house_votes dataset (available in house_votes_84.csv).
-The testing accuracy was plotted for the case with pruning and without pruning, for various sizes of the training set.
+The testing accuracy was plotted for cases with pruning and without pruning, for various sizes of the training set.
+
+![alt_text](https://github.com/rhettdsouza13/Decision-Trees/blob/master/plots/Figure_1.png)
