@@ -22,7 +22,7 @@ prune(tree_root, validation_set)
 #This will make changes to the tree itself. Doesn't return anything.
 ```
 
-Feel free to make use of the unit tests which are in unit_tests.py to be used to play around and understand the algorithm implementation.
+Feel free to make use of the unit tests which are in unit_tests.py to play around and understand the implementation and the algorithm better.
 Also, feel free to use your own dataset. However, make sure to represent missing values as '?', and represent your target label with a column (dictionary key) as 'Class'.
 
 
