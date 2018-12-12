@@ -23,19 +23,31 @@ def ID3(examples, default):
 def ID3_helper(curr_node,examples,default):
 
     labels = [x['Class'] for x in examples]
+    att_in_labels = []
+    for example in examples:
+        for key in example.keys():
+            if key != 'Class':
+                att_in_labels.append(key)
 
+    print (att_in_labels)
+    print (examples)
     if not examples:
         curr_node.set_label(default)
         curr_node.set_attribute('leaf_label')
+        print (curr_node.label, curr_node.attribute)
+
         return curr_node
-    elif len(set(labels)) <= 1:
+    elif len(set(labels)) <= 1 or len(set(att_in_labels))<1:
         curr_node.set_label(mode(labels))
         curr_node.set_attribute('leaf_label')
+        print (curr_node.label, curr_node.attribute)
+
         return curr_node
     else:
         splitter = min_entropy(examples)
+        print(splitter)
         att_labels = [x[splitter] for x in examples]
-
+        print(att_labels)
         for value in list(set(att_labels)):
             examplesi = []
 
@@ -67,7 +79,6 @@ def ID3_helper(curr_node,examples,default):
             curr_node.set_modal_att_lab(modal_att_lab)
 
             ID3_helper(new_child, examplesi, default_out)
-
         return curr_node
 
 def prune(node, examples):
@@ -150,7 +161,7 @@ def min_entropy(examples):
         current_ent = 0
         unique_attval = list(set([x[attribute] for x in examples if x[attribute] != '?' ]))
         split_bin = {x:[] for x in unique_attval}
-        
+
         #binning classes based on values of given attribute
         for example in examples:
             if example[attribute] != '?':
@@ -173,3 +184,5 @@ def min_entropy(examples):
             min_entropy_att = attribute
             entropy = current_ent
     return min_entropy_att
+
+# print(min_entropy([dict(a=0, b=1, c=1, Class=1), dict(a=0, b=0, c=1, Class=0), dict(a=1, b=0, c=1, Class=0), dict(a=1, b=1, c=0, Class=0), dict(a=1, b=1, c=0, Class=0),dict(a=1, b=1, c=1, Class=0)]))
